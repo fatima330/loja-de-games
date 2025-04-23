@@ -54,7 +54,7 @@ public class ProdutoController {
 	
 	@PostMapping
 	public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto) {
-		if (categoriaRepository.existsById(produto.getCategoria().getIdLong()))
+		if (categoriaRepository.existsById(produto.getCategoria().getId()))
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(produtoRepository.save(produto));
 		
@@ -65,13 +65,13 @@ public class ProdutoController {
 	public ResponseEntity<Produto> put(@Valid @RequestBody Produto produto) {
 		if (produtoRepository.existsById(produto.getId())) {
 			
-			if (categoriaRepository.existsById(produto.getCategoria().getIdLong()))
+			if (categoriaRepository.existsById(produto.getCategoria().getId()))
 				return ResponseEntity.status(HttpStatus.OK)
 						.body(produtoRepository.save(produto));
 			
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "categoria nao existe", null);
 		}
-		throw new ResponseStatusException(HttpStatus.NOT_FOUND, "produto nao encontrado", null);
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)

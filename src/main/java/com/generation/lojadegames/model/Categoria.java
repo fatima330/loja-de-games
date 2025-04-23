@@ -21,7 +21,7 @@ public class Categoria {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idLong;
+	private Long id;
 	
 	@NotBlank
 	@Size(min = 3, max = 50)
@@ -31,12 +31,12 @@ public class Categoria {
 	@JsonIgnoreProperties("categoria")
 	private List<Produto> produtos;
 
-	public Long getIdLong() {
-		return idLong;
+	public Long getId() {
+		return id;
 	}
 
-	public void setIdLong(Long idLong) {
-		this.idLong = idLong;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getGenero() {

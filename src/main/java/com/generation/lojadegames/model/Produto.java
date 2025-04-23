@@ -24,7 +24,6 @@ public class Produto {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	
 	@NotBlank
 	@Size(min = 3, max = 50)
 	private String nome;
